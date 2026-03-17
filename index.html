@@ -3,100 +3,221 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AntiVirus School — Бесплатный антивирус от школьников</title>
-  <!-- Bootstrap CSS -->
+  <title>Defender School — Простая защита от вирусов</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Bootstrap Icons -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-    .hero { background: linear-gradient(135deg, #0d6efd, #198754); color: white; padding: 100px 0; text-align: center; }
-    .section-title { color: #0d6efd; }
-    .card { transition: transform 0.3s; }
-    .card:hover { transform: translateY(-10px); }
-    footer { background: #0d6efd; color: white; padding: 40px 0; }
-    .dark-mode { background: #121212; color: #e0e0e0; }
-    .dark-mode .card { background: #1e1e1e; color: #e0e0e0; }
-    .dark-mode .hero { background: linear-gradient(135deg, #0a58ca, #146c43); }
+    :root {
+      --bg: #0a0e17;
+      --text: #e0e7ff;
+      --primary: #00ff9d;
+      --primary-dark: #00cc7a;
+      --secondary: #3b82f6;
+      --card-bg: rgba(30, 41, 59, 0.6);
+      --glass: rgba(30, 41, 59, 0.25);
+      --blur: blur(16px);
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    .navbar {
+      background: rgba(10, 14, 23, 0.8) !important;
+      backdrop-filter: var(--blur);
+      border-bottom: 1px solid rgba(0, 255, 157, 0.1);
+    }
+    .navbar-brand {
+      color: var(--primary) !important;
+      font-weight: 700;
+      font-size: 1.5rem;
+    }
+    .nav-link {
+      color: #cbd5e1 !important;
+      transition: color 0.3s;
+    }
+    .nav-link:hover {
+      color: var(--primary) !important;
+    }
+    .hero {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      padding: 140px 0 100px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle at 30% 20%, rgba(0, 255, 157, 0.15) 0%, transparent 50%);
+      animation: pulse 15s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.6; }
+      50% { transform: scale(1.2); opacity: 0.3; }
+    }
+    .hero h1 {
+      font-size: 4rem;
+      font-weight: 800;
+      background: linear-gradient(90deg, #00ff9d, #3b82f6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 1.5rem;
+    }
+    .hero p {
+      font-size: 1.4rem;
+      max-width: 700px;
+      margin: 0 auto 2rem;
+      color: #94a3b8;
+    }
+    .btn-neon {
+      background: transparent;
+      border: 2px solid var(--primary);
+      color: var(--primary);
+      padding: 0.8rem 2rem;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: all 0.4s;
+      overflow: hidden;
+      position: relative;
+    }
+    .btn-neon::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(0,255,157,0.3), transparent);
+      transition: 0.6s;
+    }
+    .btn-neon:hover::before { left: 100%; }
+    .btn-neon:hover {
+      background: var(--primary);
+      color: #0a0e17;
+      box-shadow: 0 0 30px rgba(0,255,157,0.5);
+    }
+    .section-title {
+      font-size: 2.8rem;
+      font-weight: 700;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .glass-card {
+      background: var(--glass);
+      backdrop-filter: var(--blur);
+      border: 1px solid rgba(0, 255, 157, 0.15);
+      border-radius: 20px;
+      padding: 2rem;
+      transition: all 0.4s;
+      height: 100%;
+    }
+    .glass-card:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 30px rgba(0,255,157,0.2);
+      border-color: var(--primary);
+    }
+    .feature-icon {
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+      color: var(--primary);
+      text-shadow: 0 0 20px rgba(0,255,157,0.4);
+    }
+    footer {
+      background: rgba(10, 14, 23, 0.9);
+      backdrop-filter: var(--blur);
+      border-top: 1px solid rgba(0, 255, 157, 0.1);
+      padding: 60px 0 30px;
+    }
+    .fade-in {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 1s ease-out;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
   </style>
 </head>
 <body>
 
   <!-- Навбар -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="#">AntiVirus School</a>
+      <a class="navbar-brand" href="#">Defender School</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
+        <ul class="navbar-nav ms-auto align-items-center">
           <li class="nav-item"><a class="nav-link" href="#home">Главная</a></li>
-          <li class="nav-item"><a class="nav-link" href="#about">О программе</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">О нас</a></li>
           <li class="nav-item"><a class="nav-link" href="#features">Функции</a></li>
           <li class="nav-item"><a class="nav-link" href="#advantages">Преимущества</a></li>
-          <li class="nav-item"><a class="nav-link" href="#instructions">Инструкции</a></li>
-          <li class="nav-item"><a class="nav-link" href="#blog">Блог</a></li>
           <li class="nav-item"><a class="nav-link" href="#download">Скачать</a></li>
           <li class="nav-item"><a class="nav-link" href="#contact">Контакты</a></li>
-          <li class="nav-item"><button id="themeBtn" class="btn btn-outline-light btn-sm">Тёмная тема</button></li>
+          <li class="nav-item ms-3">
+            <button id="themeBtn" class="btn btn-outline-light btn-sm rounded-pill px-3">Светлая тема</button>
+          </li>
         </ul>
       </div>
     </div>
   </nav>
 
   <!-- Hero -->
-  <section id="home" class="hero">
+  <section id="home" class="hero text-center">
     <div class="container">
-      <h1 class="display-4 fw-bold">Бесплатный антивирус от школьников для школьников</h1>
-      <p class="lead mt-4">Простая защита от вирусов без рекламы и подписок</p>
-      <a href="#download" class="btn btn-light btn-lg mt-4">Скачать сейчас</a>
+      <h1>Defender School</h1>
+      <p>Бесплатный антивирус от школьников — простая, честная защита без рекламы и подписок</p>
+      <a href="#download" class="btn btn-neon btn-lg mt-4">Скачать Defender</a>
     </div>
   </section>
 
   <!-- О программе -->
   <section id="about" class="py-5">
     <div class="container">
-      <h2 class="section-title text-center mb-5">О нашей антивирусной программе</h2>
-      <div class="row">
-        <div class="col-md-8 mx-auto text-center">
-          <p>AntiVirus School — это проект двух школьников 10 класса. Один написал сам антивирус на Python (сканирует файлы по сигнатурам и эвристике), а я создал этот сайт, чтобы всем было удобно скачать и узнать, как защититься от вирусов.</p>
-          <p>В 2025 году Kaspersky обнаруживает в среднем <strong>500 000 новых вредоносных файлов каждый день</strong> (+7% к 2024 году). Мы хотим дать простую и честную защиту без лишних функций.</p>
+      <h2 class="section-title">Наша команда и миссия</h2>
+      <div class="row justify-content-center">
+        <div class="col-lg-10 text-center fade-in">
+          <p class="lead mb-4">Артём разработал антивирус Defender на Python с PyQt5-интерфейсом, а Герман создал этот стильный сайт для удобного скачивания, инструкций и продвижения.</p>
+          <p>Вместе мы сделали простую защиту, которой доверяют школьники и их семьи. Всё бесплатно, открыто и без скрытых сборов данных.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Функции -->
-  <section id="features" class="bg-light py-5">
+  <section id="features" class="py-5 bg-gradient-dark">
     <div class="container">
-      <h2 class="section-title text-center mb-5">Основные функции</h2>
+      <h2 class="section-title">Что умеет Defender</h2>
       <div class="row g-4">
-        <div class="col-md-4">
-          <div class="card h-100 text-center">
-            <div class="card-body">
-              <i class="bi bi-shield-check fs-1 text-success mb-3"></i>
-              <h5>Сканирование по сигнатурам</h5>
-              <p>Сравнивает хэши файлов с базой известных вирусов</p>
-            </div>
+        <div class="col-md-4 fade-in">
+          <div class="glass-card text-center">
+            <i class="bi bi-shield-check feature-icon"></i>
+            <h5>Сигнатурный анализ</h5>
+            <p>MD5/SHA-256 хэши + база известных угроз</p>
           </div>
         </div>
-        <div class="col-md-4">
-          <div class="card h-100 text-center">
-            <div class="card-body">
-              <i class="bi bi-lightning fs-1 text-warning mb-3"></i>
-              <h5>Эвристический анализ</h5>
-              <p>Обнаруживает подозрительное поведение даже новых угроз</p>
-            </div>
+        <div class="col-md-4 fade-in" style="transition-delay: 0.2s;">
+          <div class="glass-card text-center">
+            <i class="bi bi-search feature-icon"></i>
+            <h5>Проверка расширений</h5>
+            <p>Автоматическое выявление .bat, .vbs и других подозрительных</p>
           </div>
         </div>
-        <div class="col-md-4">
-          <div class="card h-100 text-center">
-            <div class="card-body">
-              <i class="bi bi-trash fs-1 text-danger mb-3"></i>
-              <h5>Карантин и удаление</h5>
-              <p>Перемещает или удаляет опасные файлы одним кликом</p>
-            </div>
+        <div class="col-md-4 fade-in" style="transition-delay: 0.4s;">
+          <div class="glass-card text-center">
+            <i class="bi bi-shield-lock feature-icon"></i>
+            <h5>Карантин + журнал</h5>
+            <p>Перемещение угроз, история событий, тёмная тема</p>
           </div>
         </div>
       </div>
@@ -106,65 +227,24 @@
   <!-- Преимущества -->
   <section id="advantages" class="py-5">
     <div class="container">
-      <h2 class="section-title text-center mb-5">Почему именно наш антивирус?</h2>
-      <ul class="list-group list-group-flush fs-5">
-        <li class="list-group-item"><i class="bi bi-check-circle-fill text-success me-3"></i>Полностью бесплатно и без рекламы</li>
-        <li class="list-group-item"><i class="bi bi-check-circle-fill text-success me-3"></i>Портативный — не требует установки</li>
-        <li class="list-group-item"><i class="bi bi-check-circle-fill text-success me-3"></i>Открытый код на GitHub</li>
-        <li class="list-group-item"><i class="bi bi-check-circle-fill text-success me-3"></i>Понятный интерфейс на русском</li>
-        <li class="list-group-item"><i class="bi bi-check-circle-fill text-success me-3"></i>Создан школьниками для школьников</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- Инструкции -->
-  <section id="instructions" class="bg-light py-5">
-    <div class="container">
-      <h2 class="section-title text-center mb-5">Как использовать</h2>
-      <div class="row justify-content-center">
-        <div class="col-md-10">
-          <ol class="list-group list-group-numbered fs-5">
-            <li class="list-group-item">Скачай файл с нашего сайта</li>
-            <li class="list-group-item">Запусти .exe (или .py, если с исходниками)</li>
-            <li class="list-group-item">Выбери папку или весь диск для сканирования</li>
-            <li class="list-group-item">При обнаружении угрозы — выбери действие (удалить/карантин)</li>
-            <li class="list-group-item">Готово! Твой компьютер защищён</li>
-          </ol>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Блог -->
-  <section id="blog" class="py-5">
-    <div class="container">
-      <h2 class="section-title text-center mb-5">Полезные статьи</h2>
-      <div class="row g-4">
-        <div class="col-md-4">
-          <div class="card h-100">
-            <div class="card-body">
-              <h5>Что такое вирус и как он попадает на ПК</h5>
-              <p>Кратко о фишинге, троянах и ransomware</p>
-              <a href="#" class="btn btn-outline-primary">Читать</a>
-            </div>
+      <h2 class="section-title">Почему именно мы</h2>
+      <div class="row g-4 justify-content-center">
+        <div class="col-md-6 col-lg-4 fade-in">
+          <div class="glass-card">
+            <h5><i class="bi bi-currency-dollar me-2 text-success"></i>Полностью бесплатно</h5>
+            <p>Без рекламы, подписок и скрытых платежей</p>
           </div>
         </div>
-        <div class="col-md-4">
-          <div class="card h-100">
-            <div class="card-body">
-              <h5>Как безопасно скачивать файлы в 2026 году</h5>
-              <p>Правила, которые спасут от 90% угроз</p>
-              <a href="#" class="btn btn-outline-primary">Читать</a>
-            </div>
+        <div class="col-md-6 col-lg-4 fade-in" style="transition-delay: 0.2s;">
+          <div class="glass-card">
+            <h5><i class="bi bi-code-slash me-2 text-primary"></i>Открытый код</h5>
+            <p>GitHub — изучай, улучшай, доверяй</p>
           </div>
         </div>
-        <div class="col-md-4">
-          <div class="card h-100">
-            <div class="card-body">
-              <h5>Почему бесплатные антивирусы бывают опасны</h5>
-              <p>Скрытые сборы данных и реклама</p>
-              <a href="#" class="btn btn-outline-primary">Читать</a>
-            </div>
+        <div class="col-md-6 col-lg-4 fade-in" style="transition-delay: 0.4s;">
+          <div class="glass-card">
+            <h5><i class="bi bi-people me-2 text-info"></i>От школьников для всех</h5>
+            <p>Понятный интерфейс, созданный с учётом ваших нужд</p>
           </div>
         </div>
       </div>
@@ -172,35 +252,32 @@
   </section>
 
   <!-- Скачивание -->
-  <section id="download" class="py-5 bg-primary text-white text-center">
+  <section id="download" class="py-5 text-center" style="background: linear-gradient(135deg, #1e293b, #0f172a);">
     <div class="container">
-      <h2 class="mb-4">Скачай AntiVirus School прямо сейчас</h2>
-      <p class="lead mb-4">Версия 1.0 — портативная, без установки</p>
-      <a href="https://github.com/твой-ник/antivirus/releases/download/v1.0/antivirus.exe" class="btn btn-light btn-lg">Скачать (Windows)</a>
-      <p class="mt-3 small">Также доступны исходники на GitHub</p>
+      <h2 class="section-title">Готов защитить свой ПК?</h2>
+      <p class="lead mb-5">Скачай Defender прямо сейчас — портативная версия без установки</p>
+      <a href="https://github.com/твой-ник/defender/releases" class="btn btn-neon btn-lg px-5">Скачать Defender v1.0</a>
+      <p class="mt-4 small text-muted">Windows • Исходники на GitHub</p>
     </div>
   </section>
 
   <!-- Контакты -->
   <section id="contact" class="py-5">
     <div class="container">
-      <h2 class="section-title text-center mb-5">Обратная связь</h2>
+      <h2 class="section-title">Связаться с нами</h2>
       <div class="row justify-content-center">
-        <div class="col-md-8">
-          <form id="contactForm">
+        <div class="col-md-8 col-lg-6 fade-in">
+          <form id="contactForm" class="glass-card p-4">
             <div class="mb-3">
-              <label for="name" class="form-label">Имя</label>
-              <input type="text" class="form-control" id="name" required>
+              <input type="text" class="form-control bg-dark border-0 text-white" placeholder="Ваше имя" required>
             </div>
             <div class="mb-3">
-              <label for="email" class="form-label">Email</label>
-              <input type="email" class="form-control" id="email" required>
+              <input type="email" class="form-control bg-dark border-0 text-white" placeholder="Email" required>
             </div>
-            <div class="mb-3">
-              <label for="message" class="form-label">Сообщение</label>
-              <textarea class="form-control" id="message" rows="5" required></textarea>
+            <div class="mb-4">
+              <textarea class="form-control bg-dark border-0 text-white" rows="4" placeholder="Сообщение" required></textarea>
             </div>
-            <button type="submit" class="btn btn-primary">Отправить</button>
+            <button type="submit" class="btn btn-neon w-100">Отправить</button>
           </form>
         </div>
       </div>
@@ -208,26 +285,44 @@
   </section>
 
   <!-- Футер -->
-  <footer class="text-center">
-    <div class="container">
-      <p>&copy; 2026 Михно Герман. Проект по информатике 10 класс. Создано для школы №67 Краснодар.</p>
-    </div>
+  <footer class="text-center py-4">
+    <p class="mb-0 small">© 2026 Михно Герман & Алексанян Артём • 10 «А» класс • Школа №67 Краснодар</p>
   </footer>
 
-  <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <!-- Простой JS для тёмной темы -->
   <script>
+    // Тёмная/светлая тема
     const themeBtn = document.getElementById('themeBtn');
     themeBtn.addEventListener('click', () => {
-      document.body.classList.toggle('dark-mode');
-      themeBtn.textContent = document.body.classList.contains('dark-mode') ? 'Светлая тема' : 'Тёмная тема';
+      document.body.classList.toggle('light-mode');
+      if (document.body.classList.contains('light-mode')) {
+        themeBtn.textContent = 'Тёмная тема';
+        document.body.style.setProperty('--bg', '#f8fafc');
+        document.body.style.setProperty('--text', '#1e293b');
+        document.body.style.setProperty('--card-bg', 'rgba(255,255,255,0.7)');
+        document.body.style.setProperty('--glass', 'rgba(255,255,255,0.4)');
+      } else {
+        themeBtn.textContent = 'Светлая тема';
+        document.body.style.setProperty('--bg', '#0a0e17');
+        document.body.style.setProperty('--text', '#e0e7ff');
+        document.body.style.setProperty('--card-bg', 'rgba(30,41,59,0.6)');
+        document.body.style.setProperty('--glass', 'rgba(30,41,59,0.25)');
+      }
     });
 
-    // Простая форма (можно подключить Formspree или Google Forms)
-    document.getElementById('contactForm').addEventListener('submit', (e) => {
+    // Fade-in при скролле
+    const fadeElements = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.1 });
+    fadeElements.forEach(el => observer.observe(el));
+
+    // Форма (заглушка)
+    document.getElementById('contactForm').addEventListener('submit', e => {
       e.preventDefault();
-      alert('Спасибо! Сообщение отправлено (в реальности подключи Formspree или email)');
+      alert('Спасибо! Мы получили ваше сообщение (в реальности подключи Formspree).');
     });
   </script>
 </body>
