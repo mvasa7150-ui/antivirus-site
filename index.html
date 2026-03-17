@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AntiVirus School — Бесплатный антивирус от школьников</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+    .hero { background: linear-gradient(135deg, #0d6efd, #198754); color: white; padding: 100px 0; text-align: center; }
+    .section-title { color: #0d6efd; }
+    .card { transition: transform 0.3s; }
+    .card:hover { transform: translateY(-10px); }
+    footer { background: #0d6efd; color: white; padding: 40px 0; }
+    .dark-mode { background: #121212; color: #e0e0e0; }
+    .dark-mode .card { background: #1e1e1e; color: #e0e0e0; }
+    .dark-mode .hero { background: linear-gradient(135deg, #0a58ca, #146c43); }
+  </style>
+</head>
+<body>
+
+  <!-- Навбар -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">AntiVirus School</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#home">Главная</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">О программе</a></li>
+          <li class="nav-item"><a class="nav-link" href="#features">Функции</a></li>
+          <li class="nav-item"><a class="nav-link" href="#advantages">Преимущества</a></li>
+          <li class="nav-item"><a class="nav-link" href="#instructions">Инструкции</a></li>
+          <li class="nav-item"><a class="nav-link" href="#blog">Блог</a></li>
+          <li class="nav-item"><a class="nav-link" href="#download">Скачать</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Контакты</a></li>
+          <li class="nav-item"><button id="themeBtn" class="btn btn-outline-light btn-sm">Тёмная тема</button></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section id="home" class="hero">
+    <div class="container">
+      <h1 class="display-4 fw-bold">Бесплатный антивирус от школьников для школьников</h1>
+      <p class="lead mt-4">Простая защита от вирусов без рекламы и подписок</p>
+      <a href="#download" class="btn btn-light btn-lg mt-4">Скачать сейчас</a>
+    </div>
+  </section>
+
+  <!-- О программе -->
+  <section id="about" class="py-5">
+    <div class="container">
+      <h2 class="section-title text-center mb-5">О нашей антивирусной программе</h2>
+      <div class="row">
+        <div class="col-md-8 mx-auto text-center">
+          <p>AntiVirus School — это проект двух школьников 10 класса. Один написал сам антивирус на Python (сканирует файлы по сигнатурам и эвристике), а я создал этот сайт, чтобы всем было удобно скачать и узнать, как защититься от вирусов.</p>
+          <p>В 2025 году Kaspersky обнаруживает в среднем <strong>500 000 новых вредоносных файлов каждый день</strong> (+7% к 2024 году). Мы хотим дать простую и честную защиту без лишних функций.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Функции -->
+  <section id="features" class="bg-light py-5">
+    <div class="container">
+      <h2 class="section-title text-center mb-5">Основные функции</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card h-100 text-center">
+            <div class="card-body">
+              <i class="bi bi-shield-check fs-1 text-success mb-3"></i>
+              <h5>Сканирование по сигнатурам</h5>
+              <p>Сравнивает хэши файлов с базой известных вирусов</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card h-100 text-center">
+            <div class="card-body">
+              <i class="bi bi-lightning fs-1 text-warning mb-3"></i>
+              <h5>Эвристический анализ</h5>
+              <p>Обнаруживает подозрительное поведение даже новых угроз</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card h-100 text-center">
+            <div class="card-body">
+              <i class="bi bi-trash fs-1 text-danger mb-3"></i>
+              <h5>Карантин и удаление</h5>
+              <p>Перемещает или удаляет опасные файлы одним кликом</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Преимущества -->
+  <section id="advantages" class="py-5">
+    <div class="container">
+      <h2 class="section-title text-center mb-5">Почему именно наш антивирус?</h2>
+      <ul class="list-group list-group-flush fs-5">
+        <li class="list-group-item"><i class="bi bi-check-circle-fill text-success me-3"></i>Полностью бесплатно и без рекламы</li>
+        <li class="list-group-item"><i class="bi bi-check-circle-fill text-success me-3"></i>Портативный — не требует установки</li>
+        <li class="list-group-item"><i class="bi bi-check-circle-fill text-success me-3"></i>Открытый код на GitHub</li>
+        <li class="list-group-item"><i class="bi bi-check-circle-fill text-success me-3"></i>Понятный интерфейс на русском</li>
+        <li class="list-group-item"><i class="bi bi-check-circle-fill text-success me-3"></i>Создан школьниками для школьников</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Инструкции -->
+  <section id="instructions" class="bg-light py-5">
+    <div class="container">
+      <h2 class="section-title text-center mb-5">Как использовать</h2>
+      <div class="row justify-content-center">
+        <div class="col-md-10">
+          <ol class="list-group list-group-numbered fs-5">
+            <li class="list-group-item">Скачай файл с нашего сайта</li>
+            <li class="list-group-item">Запусти .exe (или .py, если с исходниками)</li>
+            <li class="list-group-item">Выбери папку или весь диск для сканирования</li>
+            <li class="list-group-item">При обнаружении угрозы — выбери действие (удалить/карантин)</li>
+            <li class="list-group-item">Готово! Твой компьютер защищён</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Блог -->
+  <section id="blog" class="py-5">
+    <div class="container">
+      <h2 class="section-title text-center mb-5">Полезные статьи</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <h5>Что такое вирус и как он попадает на ПК</h5>
+              <p>Кратко о фишинге, троянах и ransomware</p>
+              <a href="#" class="btn btn-outline-primary">Читать</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <h5>Как безопасно скачивать файлы в 2026 году</h5>
+              <p>Правила, которые спасут от 90% угроз</p>
+              <a href="#" class="btn btn-outline-primary">Читать</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <h5>Почему бесплатные антивирусы бывают опасны</h5>
+              <p>Скрытые сборы данных и реклама</p>
+              <a href="#" class="btn btn-outline-primary">Читать</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Скачивание -->
+  <section id="download" class="py-5 bg-primary text-white text-center">
+    <div class="container">
+      <h2 class="mb-4">Скачай AntiVirus School прямо сейчас</h2>
+      <p class="lead mb-4">Версия 1.0 — портативная, без установки</p>
+      <a href="https://github.com/твой-ник/antivirus/releases/download/v1.0/antivirus.exe" class="btn btn-light btn-lg">Скачать (Windows)</a>
+      <p class="mt-3 small">Также доступны исходники на GitHub</p>
+    </div>
+  </section>
+
+  <!-- Контакты -->
+  <section id="contact" class="py-5">
+    <div class="container">
+      <h2 class="section-title text-center mb-5">Обратная связь</h2>
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <form id="contactForm">
+            <div class="mb-3">
+              <label for="name" class="form-label">Имя</label>
+              <input type="text" class="form-control" id="name" required>
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" class="form-control" id="email" required>
+            </div>
+            <div class="mb-3">
+              <label for="message" class="form-label">Сообщение</label>
+              <textarea class="form-control" id="message" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Отправить</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Футер -->
+  <footer class="text-center">
+    <div class="container">
+      <p>&copy; 2026 Михно Герман. Проект по информатике 10 класс. Создано для школы №67 Краснодар.</p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Простой JS для тёмной темы -->
+  <script>
+    const themeBtn = document.getElementById('themeBtn');
+    themeBtn.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      themeBtn.textContent = document.body.classList.contains('dark-mode') ? 'Светлая тема' : 'Тёмная тема';
+    });
+
+    // Простая форма (можно подключить Formspree или Google Forms)
+    document.getElementById('contactForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('Спасибо! Сообщение отправлено (в реальности подключи Formspree или email)');
+    });
+  </script>
+</body>
+</html>
